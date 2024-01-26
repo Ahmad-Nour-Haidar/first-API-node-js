@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
 const jwt = require('jsonwebtoken');
+const passwordComplexity = require("joi-password-complexity");
 
 // User Schema
 const UserSchema = new mongoose.Schema({
@@ -22,7 +23,7 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        minlength: 6,
+        minlength: 8,
     },
     isAdmin: {
         type: Boolean,
@@ -43,7 +44,7 @@ function validateRegisterUser(user) {
     const schema = Joi.object({
         email: Joi.string().trim().min(5).max(100).required().email(),
         username: Joi.string().trim().min(2).max(200).required(),
-        password: Joi.string().trim().min(6).required(),
+        password: passwordComplexity().required(),
     });
     return schema.validate(user);
 }
@@ -52,7 +53,7 @@ function validateRegisterUser(user) {
 function validateLoginUser(user) {
     const schema = Joi.object({
         email: Joi.string().trim().min(5).max(100).required().email(),
-        password: Joi.string().trim().min(6).required(),
+        password: passwordComplexity().required(),
     });
     return schema.validate(user);
 }
@@ -60,7 +61,7 @@ function validateLoginUser(user) {
 // Validation Change Password User
 function validateChangePassword(user) {
     const schema = Joi.object({
-        password: Joi.string().trim().min(6).required(),
+        password: passwordComplexity().required(),
     });
     return schema.validate(user);
 }
@@ -70,7 +71,7 @@ function validateUpdateUser(user) {
     const schema = Joi.object({
         email: Joi.string().trim().min(5).max(100).email(),
         username: Joi.string().trim().min(2).max(200),
-        password: Joi.string().trim().min(6),
+        password: passwordComplexity().required(),
     });
     return schema.validate(user);
 }

@@ -45,23 +45,23 @@ const books = [
 
 const authors = [
     {
-        firstName: "Robert",
-        lastName: "Kiyosaki",
+        first_name: "Robert",
+        last_name: "Kiyosaki",
         nationality: "USA",
     },
     {
-        firstName: "Paulo",
-        lastName: "Coelho",
+        first_name: "Paulo",
+        last_name: "Coelho",
         nationality: "Brazil",
     },
     {
-        firstName: "Wayne",
-        lastName: "Dyer",
+        first_name: "Wayne",
+        last_name: "Dyer",
         nationality: "USA",
     },
     {
-        firstName: "Rolf",
-        lastName: "Dobelli",
+        first_name: "Rolf",
+        last_name: "Dobelli",
         nationality: "Switzerland",
     },
 ];

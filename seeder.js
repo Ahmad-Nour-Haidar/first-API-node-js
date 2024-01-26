@@ -18,16 +18,16 @@ const importBooks = async () => {
     }
 }
 
-// // Import Authors (seeding database)
-// const importAuthors = async () => {
-//     try {
-//         await Author.insertMany(authors);
-//         console.log("Authors Imported");
-//     } catch (error) {
-//         console.log(error);
-//         process.exit(1);
-//     }
-// }
+// Import Authors (seeding database)
+const importAuthors = async () => {
+    try {
+        await Author.insertMany(authors);
+        console.log("Authors Imported");
+    } catch (error) {
+        console.log(error);
+        process.exit(1);
+    }
+}
 
 // Remove Books
 const removeBooks = async () => {
@@ -45,5 +45,5 @@ if(process.argv[2] === "-import") {
 } else if (process.argv[2] === "-remove") {
     removeBooks();
 } else if (process.argv[2] === "-import-authors") {
-    // importAuthors();
+    importAuthors();
 }

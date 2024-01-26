@@ -1,6 +1,6 @@
-const { Book } = require("./models/Books");
-const { Author } = require("./models/Author");
-const { books,authors } = require("./data");
+const {Book} = require("./models/Books");
+const {Author} = require("./models/Author");
+const {books, authors} = require("./data");
 const connectToDb = require("./config/db");
 require("dotenv").config();
 
@@ -40,7 +40,7 @@ const removeBooks = async () => {
     }
 }
 
-if(process.argv[2] === "-import") {
+if (process.argv[2] === "-import") {
     importBooks();
 } else if (process.argv[2] === "-remove") {
     removeBooks();

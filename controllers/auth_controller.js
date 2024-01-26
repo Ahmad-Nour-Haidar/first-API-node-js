@@ -8,7 +8,7 @@ const {User, validateRegisterUser, validateLoginUser} = require('../models/User'
  * @access Public
  * @method POST
  * */
-const register =  asyncHandler(
+const register = asyncHandler(
     async (req, res) => {
         const {error} = validateRegisterUser(req.body);
         if (error) {
@@ -37,7 +37,7 @@ const register =  asyncHandler(
  * @access Public
  * @method POST
  * */
-const login =  asyncHandler(
+const login = asyncHandler(
     async (req, res) => {
         const {error} = validateLoginUser(req.body);
         if (error) {

@@ -4,6 +4,8 @@ const logger = require('./middleware/logger');
 const connectDB = require('./config/db');
 require('dotenv').config();
 const path = require("path");
+const helmet = require("helmet");
+const cors = require("cors");
 
 // initialize app
 const app = express();
@@ -18,6 +20,12 @@ app.use(express.static(path.join(__dirname, "images")));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(logger);
+
+// Helmet
+app.use(helmet());
+
+// Cors Policy
+app.use(cors())
 
 // Set View Engine
 app.set('view engine', 'ejs');

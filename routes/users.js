@@ -10,10 +10,10 @@ const {
 
 // api/users
 router.route('/:id')
-    .put( verifyTokenAndAuthorization, updateUser)
-    .get( verifyTokenAndAuthorization, getUserById)
-    .delete( verifyTokenAndAuthorization, deleteUser);
+    .put(verifyTokenAndAuthorization, updateUser)
+    .get(verifyTokenAndAuthorization, getUserById)
+    .delete(verifyTokenAndAuthorization, deleteUser);
 
-router.route('/').get( verifyTokenAndAdmin, getAllUsers);
+router.route('/').get(verifyTokenAndAdmin, getAllUsers);
 // api/users/:id
 module.exports = router;

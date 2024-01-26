@@ -11,8 +11,22 @@ const {verifyTokenAndAdmin} = require('../middleware/verifyToken');
  */
 router.get('/', asyncHandler(
     async (req, res) => {
-        const booksList = await Book.find().populate('author', '_id first_name last_name');
-        res.status(200).json(booksList);
+        // Comparison Query Operators
+        // $eq, $ne, $gt, $gte, $lt, $lte, $in, $nin, $regex,
+        const {minPrice, maxPrice} = req.query;
+        let books;
+        if (minPrice && maxPrice) {
+            books = await Book.find({
+                price: {$gte: minPrice, $lte: maxPrice},
+            }).populate("author", ["_id", "firstName", "lastName"]);
+        } else {
+            books = await Book.find().populate("author", [
+                "_id",
+                "firstName",
+                "lastName",
+            ]);
+        }
+        res.status(200).json(books);
     }));
 
 /**
